@@ -141,7 +141,6 @@ fun PJT2RockScissorsPaper() {
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-
         //title
         Text(text = "가위바위보 게임", style = MaterialTheme.typography.headlineLarge)
         Spacer(modifier = Modifier.height(16.dp))
@@ -222,14 +221,25 @@ fun PJT2RockScissorsPaper() {
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.fillMaxWidth()
             ){
-                Column (horizontalAlignment = Alignment.CenterHorizontally) {
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.weight(2.5f)
+                ) {
                     Text(text = "Player",fontSize = 24.sp)
                     Text(text = "${playerChoice}",fontSize = 18.sp)
                     selectedImage(chosenImagePlayer,48.dp)
                 }
-                Text(text = " VS ",fontSize = 24.sp)
+                Text(
+                    text = "VS",
+                    fontSize = 24.sp,
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
+                )
 
-                Column (horizontalAlignment = Alignment.CenterHorizontally) {
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.weight(2.5f)
+                ) {
                     Text(text = "Computer",fontSize = 24.sp)
                     Text(text = "${computerChoice}",fontSize = 18.sp)
                     selectedImage(chosenImageComputer,48.dp)
@@ -246,14 +256,25 @@ fun PJT2RockScissorsPaper() {
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 modifier = Modifier.fillMaxWidth()
             ){
-                Column (horizontalAlignment = Alignment.CenterHorizontally) {
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.weight(2.5f)
+                ) {
                     Text(text = "Player",fontSize = 24.sp)
                     Text(text = "${playerChoice}",fontSize = 18.sp)
                     selectedImage(chosenImagePlayer,48.dp)
                 }
-                Text(text = " VS ",fontSize = 24.sp)
+                Text(
+                    text = "VS",
+                    fontSize = 24.sp,
+                    modifier = Modifier.weight(1f),
+                    textAlign = TextAlign.Center
+                )
 
-                Column (horizontalAlignment = Alignment.CenterHorizontally) {
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.weight(2.5f)
+                ) {
                     Text(text = "Computer",fontSize = 24.sp)
                     Text(text = "${computerChoice}",fontSize = 18.sp)
                     selectedImage(chosenImageComputer,48.dp)
@@ -264,7 +285,7 @@ fun PJT2RockScissorsPaper() {
         }else {
             //nothing
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        //Spacer(modifier = Modifier.height(16.dp))
 
         //RESET
         Spacer(modifier = Modifier.weight(1f))
@@ -278,6 +299,7 @@ fun PJT2RockScissorsPaper() {
                 Text(text = "RESET", fontSize = 16.sp)
             }
         }
+
     }
 }
 
