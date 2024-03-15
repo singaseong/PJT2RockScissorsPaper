@@ -77,7 +77,9 @@ fun PJT2RockScissorsPaper() {
     var chosenImagePlayer : Int by remember { mutableStateOf(0)}
     var chosenImageComputer : Int by remember { mutableStateOf(0)}
     var winner by remember {mutableStateOf("")}
-
+    var winCountPlayer by remember {mutableStateOf(0)}
+    var winCountComputer by remember {mutableStateOf(0)}
+    var totalGameCount by remember {mutableStateOf(0)}
 
     fun comChoice() {
         val randomNumber = (1..3).random()
@@ -108,6 +110,16 @@ fun PJT2RockScissorsPaper() {
             playerChoice == "Scissors" && computerChoice == "Paper" -> "Player"
             else -> "Computer"
         }
+
+        if (winner =="Player") {
+            winCountPlayer += 1
+        } else if (winner =="Computer"){
+            winCountComputer += 1
+        } else {
+
+        }
+
+
     }
 
     @Composable
@@ -134,7 +146,7 @@ fun PJT2RockScissorsPaper() {
                 .size(size)
         )
     }
-
+    
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -202,6 +214,7 @@ fun PJT2RockScissorsPaper() {
                 onClick = {
                     comChoice()
                     winnerCheck ()
+                    totalGameCount += 1
                 }
 
             ){
@@ -214,6 +227,7 @@ fun PJT2RockScissorsPaper() {
 
         //Show the winner
         if(winner !="" && winner !="Tie") {
+            Text(text = "Total Game : ${totalGameCount}ea",fontSize = 28.sp)
             Text(text = "Winner : ${winner}",fontSize = 28.sp)
 
             Row(
@@ -228,6 +242,7 @@ fun PJT2RockScissorsPaper() {
                     Text(text = "Player",fontSize = 24.sp)
                     Text(text = "${playerChoice}",fontSize = 18.sp)
                     selectedImage(chosenImagePlayer,48.dp)
+                    Text(text = "Win : ${winCountPlayer}",fontSize = 18.sp)
                 }
                 Text(
                     text = "VS",
@@ -243,6 +258,7 @@ fun PJT2RockScissorsPaper() {
                     Text(text = "Computer",fontSize = 24.sp)
                     Text(text = "${computerChoice}",fontSize = 18.sp)
                     selectedImage(chosenImageComputer,48.dp)
+                    Text(text = "Win : ${winCountComputer}",fontSize = 18.sp)
 
                 }
 
@@ -250,6 +266,7 @@ fun PJT2RockScissorsPaper() {
 
 
         }else if(winner =="Tie") {
+            Text(text = "Total Game : ${totalGameCount}ea",fontSize = 28.sp)
             Text(text = "Draw",fontSize = 28.sp)
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -263,6 +280,7 @@ fun PJT2RockScissorsPaper() {
                     Text(text = "Player",fontSize = 24.sp)
                     Text(text = "${playerChoice}",fontSize = 18.sp)
                     selectedImage(chosenImagePlayer,48.dp)
+                    Text(text = "Win : ${winCountPlayer}",fontSize = 18.sp)
                 }
                 Text(
                     text = "VS",
@@ -278,6 +296,7 @@ fun PJT2RockScissorsPaper() {
                     Text(text = "Computer",fontSize = 24.sp)
                     Text(text = "${computerChoice}",fontSize = 18.sp)
                     selectedImage(chosenImageComputer,48.dp)
+                    Text(text = "Win : ${winCountComputer}",fontSize = 18.sp)
 
                 }
 
@@ -295,6 +314,9 @@ fun PJT2RockScissorsPaper() {
                     playerChoice = ""
                     computerChoice = ""
                     winner = ""
+                    winCountPlayer =0
+                    winCountComputer=0
+                    totalGameCount=0
                 }){
                 Text(text = "RESET", fontSize = 16.sp)
             }
